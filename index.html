@@ -6,22 +6,66 @@
     <title>Garage Builder</title>
   </head>
   <body>
-    <h1>Garage Builder</h1>
     <main>
-      <h3>Input your car!</h3>
+      <h1>BUILD YOUR GARAGE.</h1>
+      <p>
+        Track every mod, oil change, and service record across all your
+        vehicles. Your build history, all in one place.
+      </p>
       <form id="carForm">
-        <label for="make">Make</label><br />
-        <input type="text" id="make" name="make" /><br />
+        <label for="make">Make</label>
+        <input type="text" id="make" name="make" />
 
-        <label for="model">Model</label><br />
-        <input type="text" id="model" name="model" /><br />
+        <label for="model">Model</label>
+        <input type="text" id="model" name="model" />
 
-        <label for="year">Year</label><br />
-        <input type="number" id="year" name="year" /> <br /><br />
+        <label for="year">Year</label>
+        <input type="number" id="year" name="year" />
 
-        <input type="submit" value="Add Vehicle to Garage" />
+        <label for="category">Category</label>
+        <select id="category" name="category">
+          <option value="" disabled selected>Select type...</option>
+          <option value="daily">Daily Driver</option>
+          <option value="weekend">Weekender</option>
+          <option value="track">Track Car</option>
+        </select>
+
+        <input type="submit" value="ADD TO MY GARAGE" />
       </form>
-    </main
+
+      <section id="dashboard">
+        <div class="vehicle-card">
+          <span id="vehicle-num">0</span>
+          <span id="vehicles-tracker">Vehicles Tracked</span>
+        </div>
+
+        <div class="vehicle-card">
+          <span id="vehicle-num">0</span>
+          <span id="vehicles-tracker">Vehicles Tracked</span>
+        </div>
+
+        <div class="vehicle-card">
+          <span id="vehicle-num">0</span>
+          <span id="vehicles-tracker">Vehicles Tracked</span>
+        </div>
+
+        <div class="vehicle-card">
+          <span id="vehicle-num">0</span>
+          <span id="vehicles-tracker">Vehicles Tracked</span>
+        </div>
+      </section>
+
+      <section id="my-garage">
+        <h2>My Garage</h2>
+        <div class="garage-card">
+          <img class="garage-image" src=".jpg" alt="An image of a car" />
+          <span class="car-year">1993</span>
+          <span class="car-name">Honda Civic</span>
+          <span class="mod-number">3 Mods</span>
+          <span class="oil-changes">Oil: 3K ago</span>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
   </body>
-  <script src="script.js"></script>
 </html>
