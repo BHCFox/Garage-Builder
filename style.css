@@ -1,0 +1,49 @@
+/* FORM */
+
+form {
+  background-color: #cecece;
+  padding: 32px;
+  border-radius: 8px;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing:;
+  color:;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+}
+
+input:focus,
+select:focus {
+}
+
+input[type="submit"] {
+}
+
+input[type="submit"]:hover {
+}
+
+/* Dashboard */
+
+#dashboard {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.vehicle-card {
+  color: black 1px solid;
+  border-radius: 6px;
+}

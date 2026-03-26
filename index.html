@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Garage Builder</title>
   </head>
   <body>
@@ -31,27 +32,28 @@
         </select>
 
         <input type="submit" value="ADD TO MY GARAGE" />
+        <p class="error-msg" id="error-msg"></p>
       </form>
 
       <section id="dashboard">
         <div class="vehicle-card">
-          <span id="vehicle-num">0</span>
-          <span id="vehicles-tracker">Vehicles Tracked</span>
+          <span id="total-vehicles-num">0</span>
+          <span id="total-vehicles-">Total Vehicles</span>
         </div>
 
         <div class="vehicle-card">
-          <span id="vehicle-num">0</span>
-          <span id="vehicles-tracker">Vehicles Tracked</span>
+          <span id="total-mods-num">0</span>
+          <span id="total-mods">Total Mods</span>
         </div>
 
         <div class="vehicle-card">
-          <span id="vehicle-num">0</span>
-          <span id="vehicles-tracker">Vehicles Tracked</span>
+          <span id="track-cars-num">0</span>
+          <span id="track-cars">Track Cars</span>
         </div>
 
         <div class="vehicle-card">
-          <span id="vehicle-num">0</span>
-          <span id="vehicles-tracker">Vehicles Tracked</span>
+          <span id="service-due-num">0</span>
+          <span id="service-due">Service Due</span>
         </div>
       </section>
 
