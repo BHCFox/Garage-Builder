@@ -36,14 +36,14 @@ form.addEventListener("submit", function (event) {
     showError("Please select a year!");
     return;
   }
-  if (category === "") {
-    showError("Please choose a category!");
-    return;
-  }
-
   const currentYear = new Date().getFullYear();
   if (year < 1960 || year > currentYear + 1) {
     showError("Please enter a valid year (1960–" + (currentYear + 1) + ")");
+    return;
+  }
+
+  if (category === "") {
+    showError("Please choose a category!");
     return;
   }
 
@@ -66,7 +66,9 @@ form.addEventListener("submit", function (event) {
   // Update the dashboard count from the array length
   totalVehiclesEl.textContent = cars.length;
 
-  showError("");
+  showError(
+    `Your ${car.year} ${car.make} ${car.model} ${car.category} has been added to your garage!`,
+  );
 
   // Log the updated cars array to the console so we can see what's happening
   console.log(cars);
