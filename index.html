@@ -3,70 +3,156 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Garage Builder</title>
   </head>
   <body>
     <main>
-      <h1>BUILD YOUR GARAGE.</h1>
-      <p>
-        Track every mod, oil change, and service record across all your
-        vehicles. Your build history, all in one place.
-      </p>
-      <form id="carForm">
-        <label for="make">Make</label>
-        <input type="text" id="make" name="make" />
+      <header class="site-header">
+        <h1>GARAGE<span class="accent">.</span></h1>
+        <p class="tagline">
+          Track every mod, oil change, and service record across all your
+          vehicles.
+        </p>
+      </header>
 
-        <label for="model">Model</label>
-        <input type="text" id="model" name="model" />
-
-        <label for="year">Year</label>
-        <input type="number" id="year" name="year" />
-
-        <label for="category">Category</label>
-        <select id="category" name="category">
-          <option value="" disabled selected>Select type...</option>
-          <option value="daily">Daily Driver</option>
-          <option value="weekend">Weekender</option>
-          <option value="track">Track Car</option>
-        </select>
-
-        <input type="submit" value="ADD TO MY GARAGE" />
-        <p class="error-msg" id="error-msg"></p>
-      </form>
-
+      <!-- DASHBOARD -->
       <section id="dashboard">
-        <div class="vehicle-card">
-          <span id="total-vehicles-num">0</span>
-          <span id="total-vehicles-">Total Vehicles</span>
+        <div class="stat-card">
+          <span class="stat-num" id="total-vehicles-num">0</span>
+          <span class="stat-label">Vehicles</span>
         </div>
-
-        <div class="vehicle-card">
-          <span id="total-mods-num">0</span>
-          <span id="total-mods">Total Mods</span>
+        <div class="stat-card">
+          <span class="stat-num" id="total-mods-num">0</span>
+          <span class="stat-label">Total Mods</span>
         </div>
-
-        <div class="vehicle-card">
-          <span id="track-cars-num">0</span>
-          <span id="track-cars">Track Cars</span>
+        <div class="stat-card">
+          <span class="stat-num" id="track-cars-num">0</span>
+          <span class="stat-label">Track Cars</span>
         </div>
-
-        <div class="vehicle-card">
-          <span id="service-due-num">0</span>
-          <span id="service-due">Service Due</span>
+        <div class="stat-card">
+          <span class="stat-num" id="service-due-num">0</span>
+          <span class="stat-label">Service Due</span>
         </div>
       </section>
 
-      <section id="my-garage">
-        <h2>My Garage</h2>
-        <div class="garage-card">
-          <img class="garage-image" src=".jpg" alt="An image of a car" />
-          <span class="car-year">1993</span>
-          <span class="car-name">Honda Civic</span>
-          <span class="mod-number">3 Mods</span>
-          <span class="oil-changes">Oil: 3K ago</span>
-        </div>
+      <!-- ADD VEHICLE FORM -->
+      <section class="form-section">
+        <h2 class="section-title">ADD VEHICLE</h2>
+        <form id="carForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="make">Make</label>
+              <input
+                type="text"
+                id="make"
+                name="make"
+                placeholder="e.g. Honda"
+              />
+            </div>
+            <div class="form-group">
+              <label for="model">Model</label>
+              <input
+                type="text"
+                id="model"
+                name="model"
+                placeholder="e.g. Civic"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="year">Year</label>
+              <input
+                type="number"
+                id="year"
+                name="year"
+                placeholder="e.g. 1993"
+              />
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select id="category" name="category">
+                <option value="" disabled selected>Select type...</option>
+                <option value="daily">Daily Driver</option>
+                <option value="weekend">Weekender</option>
+                <option value="track">Track Car</option>
+              </select>
+            </div>
+          </div>
+
+          <p class="error-msg" id="error-msg"></p>
+          <p class="success-msg" id="success-msg"></p>
+
+          <input type="submit" value="ADD TO MY GARAGE" />
+        </form>
       </section>
+
+      <!-- FILTER BAR -->
+      <section class="garage-section">
+        <div class="garage-header">
+          <h2 class="section-title">MY GARAGE</h2>
+          <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <select id="filterCategory">
+              <option value="all">All Types</option>
+              <option value="daily">Daily Driver</option>
+              <option value="weekend">Weekender</option>
+              <option value="track">Track Car</option>
+            </select>
+            <select id="sortBy">
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="make">By Make</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="empty-state" id="emptyState">
+          <span class="empty-icon">🚗</span>
+          <p>Your garage is empty. Add your first vehicle above.</p>
+        </div>
+
+        <!-- Car cards render here -->
+        <div id="my-garage"></div>
+      </section>
+
+      <!-- MOD LOG MODAL -->
+      <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+          <button class="modal-close" id="modalClose">✕</button>
+          <h3 class="modal-title" id="modalTitle"></h3>
+          <div class="modal-badge" id="modalBadge"></div>
+
+          <!-- Add mod form inside modal -->
+          <div class="mod-form">
+            <input
+              type="text"
+              id="modInput"
+              placeholder="e.g. Coilovers, oil change, new exhaust..."
+            />
+            <select id="modType">
+              <option value="mod">Mod</option>
+              <option value="service">Service / Oil Change</option>
+            </select>
+            <button id="addModBtn">LOG IT</button>
+          </div>
+
+          <!-- Mod list renders here -->
+          <ul class="mod-list" id="modList"></ul>
+
+          <div class="mod-empty" id="modEmpty">
+            No mods or services logged yet.
+          </div>
+        </div>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>
